@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe MongoHQClient::Collection do
-  let(:subject) { MongoHQClient::Collection.new json: JSON.parse('{"name":"collection1","count":15,"storageSize":192512,"avgObjSize":2257.866666666667,"indexCount":1,"ok":1.0}'), apikey: "123456" }
+  let(:subject) { MongoHQClient::Collection.new json: JSON.parse('{"name":"collection1","count":15,"storageSize":192512,"avgObjSize":2257.866666666667,"indexCount":1,"ok":1.0}'), apikey: "123456", database: "database1" }
 
   describe "#name" do
     it_behaves_like "attribute", :name, "collection1"
@@ -30,12 +30,11 @@ describe MongoHQClient::Collection do
   describe "#documents" do
 
     before do
-      FakeWeb.register_uri :get, "https://api.mongohq.com/database/database1/collection/collection1/documents?_apikey=123456", body: ''
+      FakeWeb.register_uri :get, "https://api.mongohq.com/database/database1/collection/collection1/documents?_apikey=123456", body: '[{"_id":{"$oid": "4ffde13927bce841321005ec0"},"name":"Test User","updated_at":"2012-07-11 20:25:29 UTC","created_at":"2012-07-11 20:25:29 UTC"}]'
     end
 
     it "should return documents" do
-      pending
-      subject.documents.size.should eq(20)
+      subject.documents.size.should eq(1)
     end
   end
 

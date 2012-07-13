@@ -1,12 +1,13 @@
 require 'httparty'
 require 'json'
 
-require_relative 'mongohq_client/commons'
-require_relative 'mongohq_client/http'
-require_relative 'mongohq_client/collection'
-require_relative 'mongohq_client/database_details'
-require_relative 'mongohq_client/database'
-require_relative 'mongohq_client/client'
+require 'mongohq_client/commons'
+require 'mongohq_client/http'
+require 'mongohq_client/document'
+require 'mongohq_client/collection'
+require 'mongohq_client/database_details'
+require 'mongohq_client/database'
+require 'mongohq_client/client'
 
 module MongoHQClient
 

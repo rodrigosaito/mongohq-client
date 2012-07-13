@@ -5,17 +5,17 @@ module MongoHQClient
     include HTTP
 
     def details
-      resp = get("database/#{name}")
+      json = get("database/#{name}")
 
-      DatabaseDetails.new json: JSON.parse(resp.body)
+      DatabaseDetails.new json: json
     end
 
     def collections
-      resp = get("database/#{name}/collections")
+      json = get("database/#{name}/collections")
 
       collections = []
 
-      JSON.parse(resp).each do |col|
+      json.each do |col|
         collections << Collection.new(json: col, apikey: @apikey)
       end
 
@@ -23,9 +23,9 @@ module MongoHQClient
     end
 
     def collection(col_name)
-      resp = get("database/#{name}/collection/#{col_name}")
+      json = get("database/#{name}/collection/#{col_name}")
 
-      Collection.new(json: JSON.parse(resp.body))
+      Collection.new(json: json)
     end
 
   end

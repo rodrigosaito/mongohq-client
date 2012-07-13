@@ -4,6 +4,8 @@ module MongoHQClient
 
     def get(uri)
       resp = HTTParty.get("#{base_uri}/#{uri}", query: { :_apikey => apikey } )
+
+      JSON.parse(resp.body)
     end
 
     protected
