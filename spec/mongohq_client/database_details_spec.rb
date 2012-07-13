@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe MongoHQClient::DatabaseDetails do
-  let(:subject) { MongoHQClient::DatabaseDetails.new json: '{"db":"database1","collections":10,"objects":1799,"avgObjSize":353.85881045025013,"dataSize":636592,"storageSize":2314240,"numExtents":17,"indexes":9,"indexSize":147168,"fileSize":251658240,"nsSizeMB":16,"ok":1.0,"name":"database1","hostname":"host.mongohq.com","port":27036,"shared":true,"plan":"Micro"}' }
+  let(:subject) { MongoHQClient::DatabaseDetails.new json: JSON.parse('{"db":"database1","collections":10,"objects":1799,"avgObjSize":353.85881045025013,"dataSize":636592,"storageSize":2314240,"numExtents":17,"indexes":9,"indexSize":147168,"fileSize":251658240,"nsSizeMB":16,"ok":1.0,"name":"database1","hostname":"host.mongohq.com","port":27036,"shared":true,"plan":"Micro"}') }
 
   describe "#db" do
     it_behaves_like "attribute", :db, "database1"

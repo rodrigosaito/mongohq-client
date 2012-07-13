@@ -6,14 +6,23 @@ module MongoHQClient
         attribute = attribute.to_s[0..-2]
       end
 
-      super.method_missing(method, *args) unless @json.has_key? attribute
+      super.method_missing(method, *args) unless json_hash.has_key? attribute
 
-      return @json["#{attribute}"]
+      return json_hash["#{attribute}"]
     end
 
     def initialize(params = {})
-      @json = JSON.parse(params[:json])
-      @apikey = params[:apikey]
+      raise "Invalid json" unless params[:json].is_a? Hash
+      @params = params
+    end
+
+    protected
+    def json_hash
+      @params[:json]
+    end
+
+    def apikey
+      @params[:apikey]
     end
 
   end

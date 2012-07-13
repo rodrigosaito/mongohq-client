@@ -19,7 +19,7 @@ module MongoHQClient
       dbs = JSON.parse resp.body
 
       dbs.each do |db|
-        db_list << Database.new(json: db.to_json, apikey: apikey)
+        db_list << Database.new(json: db, apikey: apikey)
       end
 
       db_list

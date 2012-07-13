@@ -2,7 +2,7 @@ require "spec_helper"
 
 describe MongoHQClient::Database do
 
-  let(:database) { MongoHQClient::Database.new json: '{"name":"database1","hostname":"host.mongohq.com","port":27036,"shared":true,"plan":"Micro"}', apikey: "123456" }
+  let(:database) { MongoHQClient::Database.new json: JSON.parse('{"name":"database1","hostname":"host.mongohq.com","port":27036,"shared":true,"plan":"Micro"}'), apikey: "123456" }
 
   describe "#name" do
     it "should return the name of database" do
@@ -74,17 +74,6 @@ describe MongoHQClient::Database do
     it "should return collection with details" do
       collection.ns.should eq("database1.collection1")
     end
-
-    describe "#documents" do
-
-      it "should return documents" do
-        pending
-        collection.documents.size.should eq(20)
-      end
-
-    end
   end
-
-
 
 end
