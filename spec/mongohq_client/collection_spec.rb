@@ -28,13 +28,22 @@ describe MongoHQClient::Collection do
   end
 
   describe "#documents" do
-
     before do
       FakeWeb.register_uri :get, "https://api.mongohq.com/database/database1/collection/collection1/documents?_apikey=123456", body: '[{"_id":{"$oid": "4ffde13927bce841321005ec0"},"name":"Test User","updated_at":"2012-07-11 20:25:29 UTC","created_at":"2012-07-11 20:25:29 UTC"}]'
     end
 
     it "should return documents" do
       subject.documents.size.should eq(1)
+    end
+  end
+
+  describe "#document" do
+    before do
+      FakeWeb.register_uri :get, "https://api.mongohq.com/database/database1/collection/collection1/documents/4ffde13927bce841321005ec0?_apikey=123456", body: '{"_id":{"$oid": "4ffde13927bce841321005ec0"},"name":"Test User","updated_at":"2012-07-11 20:25:29 UTC","created_at":"2012-07-11 20:25:29 UTC"}'
+    end
+
+    it "should return document by id" do
+      subject.document('4ffde13927bce841321005ec0').name.should eq("Test User")
     end
   end
 

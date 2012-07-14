@@ -15,6 +15,12 @@ module MongoHQClient
       documents
     end
 
+    def document(id)
+      json = get("database/#{database}/collection/#{name}/documents/#{id}")
+
+      Document.new(json: json)
+    end
+
     protected
     def database
       raise "Invalid database" unless @params[:database]
