@@ -16,7 +16,7 @@ module MongoHQClient
       collections = []
 
       json.each do |col|
-        collections << Collection.new(json: col, apikey: @apikey)
+        collections << Collection.new(json: col, apikey: apikey, database: name)
       end
 
       collections

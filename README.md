@@ -32,13 +32,9 @@ Retrieve all your databases
 
     databases = client.databases
 
-Retrieve an specific database
-
-    db = client.database("database1")
-
 Retrive collections from database
 
-    collections = db.collections
+    collections = client.databases.first.collections
 
 ## Contributing
 
