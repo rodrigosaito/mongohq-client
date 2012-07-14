@@ -21,6 +21,18 @@ module MongoHQClient
       Document.new(json: json)
     end
 
+    def indexes
+      json = get("database/#{database}/collection/#{name}/indexes")
+
+      indexes = []
+
+      json.each do |index|
+        indexes << Index.new(json: index)
+      end
+
+      indexes
+    end
+
     protected
     def database
       raise "Invalid database" unless @params[:database]

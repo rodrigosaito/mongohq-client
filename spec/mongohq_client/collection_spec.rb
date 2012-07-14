@@ -47,4 +47,18 @@ describe MongoHQClient::Collection do
     end
   end
 
+  describe "#indexes" do
+    before do
+      FakeWeb.register_uri :get, "https://api.mongohq.com/database/database1/collection/collection1/indexes?_apikey=123456", body: '[{"v":1,"key":{"_id":1},"ns":"database1.collection1","name":"_id_"}]'
+    end
+
+    it "should return indexes" do
+      subject.indexes.size.should eq(1)
+    end
+
+    it "should return ns" do
+      subject.indexes.first.ns.should eq("database1.collection1")
+    end
+  end
+
 end

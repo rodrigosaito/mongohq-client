@@ -25,7 +25,7 @@ module MongoHQClient
     def collection(col_name)
       json = get("database/#{name}/collection/#{col_name}")
 
-      Collection.new(json: json)
+      Collection.new(json: json, database: name)
     end
 
   end
