@@ -1,5 +1,7 @@
 # Mongohq::Client
 
+A simple MongoHQ api client for ruby
+
 TODO: Write a gem description
 
 ## Installation
@@ -18,7 +20,13 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Authenticate with you apikey
+
+    client = MongoHQClient.from_apikey("youapikey")
+
+Retrieve all your databases
+
+    databases = client.databases
 
 ## Contributing
 
