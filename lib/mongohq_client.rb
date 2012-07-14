@@ -3,6 +3,7 @@ require 'json'
 
 require 'mongohq_client/commons'
 require 'mongohq_client/http'
+require 'mongohq_client/plan'
 require 'mongohq_client/invoice'
 require 'mongohq_client/index'
 require 'mongohq_client/document'

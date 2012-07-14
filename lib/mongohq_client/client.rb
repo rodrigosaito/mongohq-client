@@ -38,6 +38,18 @@ module MongoHQClient
 
       Invoice.new json: json
     end
+
+    def plans
+      json = get("plans")
+
+      plans = []
+
+      json.each do |plan|
+        plans << Plan.new(json: plan)
+      end
+
+      plans
+    end
   end
 
 end

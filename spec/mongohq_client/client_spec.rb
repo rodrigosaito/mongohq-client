@@ -50,4 +50,16 @@ describe MongoHQClient::Client do
     end
   end
 
+  describe "#plans" do
+    before do
+      FakeWeb.register_uri :get, "https://api.mongohq.com/plans?_apikey=#{client.apikey}", body: '[{"name":"Micro","slug":"micro","price":5,"type":"hosted"},{"name":"Replica Set: Large","slug":"rs_large","price":300,"type":"hosted"}]'
+    end
+
+    let(:plans) { client.plans }
+
+    it "should return plans" do
+      plans.size.should eq(2)
+    end
+  end
+
 end
