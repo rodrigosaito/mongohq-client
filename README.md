@@ -36,6 +36,10 @@ Retrive collections from database
 
     collections = client.databases.first.collections
 
+Retrieve documents from a collection
+
+    documents = client.databases.first.collections.first.documents
+
 ## Contributing
 
 1. Fork it
