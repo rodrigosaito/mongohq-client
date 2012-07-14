@@ -32,6 +32,12 @@ module MongoHQClient
 
       invoices
     end
+
+    def invoice(id)
+      json = get("invoices/#{id}")
+
+      Invoice.new json: json
+    end
   end
 
 end
