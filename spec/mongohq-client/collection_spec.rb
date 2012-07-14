@@ -29,7 +29,7 @@ describe MongoHQClient::Collection do
 
   describe "#documents" do
     before do
-      FakeWeb.register_uri :get, "https://api.mongohq.com/database/database1/collection/collection1/documents?_apikey=123456", body: '[{"_id":{"$oid": "4ffde13927bce841321005ec0"},"name":"Test User","updated_at":"2012-07-11 20:25:29 UTC","created_at":"2012-07-11 20:25:29 UTC"}]'
+      FakeWeb.register_uri :get, "https://api.mongohq.com/databases/database1/collections/collection1/documents?_apikey=123456", body: '[{"_id":{"$oid": "4ffde13927bce841321005ec0"},"name":"Test User","updated_at":"2012-07-11 20:25:29 UTC","created_at":"2012-07-11 20:25:29 UTC"}]'
     end
 
     it "should return documents" do
@@ -39,7 +39,7 @@ describe MongoHQClient::Collection do
 
   describe "#document" do
     before do
-      FakeWeb.register_uri :get, "https://api.mongohq.com/database/database1/collection/collection1/documents/4ffde13927bce841321005ec0?_apikey=123456", body: '{"_id":{"$oid": "4ffde13927bce841321005ec0"},"name":"Test User","updated_at":"2012-07-11 20:25:29 UTC","created_at":"2012-07-11 20:25:29 UTC"}'
+      FakeWeb.register_uri :get, "https://api.mongohq.com/databases/database1/collections/collection1/documents/4ffde13927bce841321005ec0?_apikey=123456", body: '{"_id":{"$oid": "4ffde13927bce841321005ec0"},"name":"Test User","updated_at":"2012-07-11 20:25:29 UTC","created_at":"2012-07-11 20:25:29 UTC"}'
     end
 
     it "should return document by id" do
@@ -49,7 +49,7 @@ describe MongoHQClient::Collection do
 
   describe "#indexes" do
     before do
-      FakeWeb.register_uri :get, "https://api.mongohq.com/database/database1/collection/collection1/indexes?_apikey=123456", body: '[{"v":1,"key":{"_id":1},"ns":"database1.collection1","name":"_id_"}]'
+      FakeWeb.register_uri :get, "https://api.mongohq.com/databases/database1/collections/collection1/indexes?_apikey=123456", body: '[{"v":1,"key":{"_id":1},"ns":"database1.collection1","name":"_id_"}]'
     end
 
     it "should return indexes" do

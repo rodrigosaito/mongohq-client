@@ -4,7 +4,7 @@ module MongoHQClient
     include HTTP
 
     def documents
-      json = get("database/#{database}/collection/#{name}/documents")
+      json = get("databases/#{database}/collections/#{name}/documents")
 
       documents = []
 
@@ -16,13 +16,13 @@ module MongoHQClient
     end
 
     def document(id)
-      json = get("database/#{database}/collection/#{name}/documents/#{id}")
+      json = get("databases/#{database}/collections/#{name}/documents/#{id}")
 
       Document.new(json: json)
     end
 
     def indexes
-      json = get("database/#{database}/collection/#{name}/indexes")
+      json = get("databases/#{database}/collections/#{name}/indexes")
 
       indexes = []
 

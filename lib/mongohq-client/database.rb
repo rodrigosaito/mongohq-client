@@ -5,13 +5,13 @@ module MongoHQClient
     include HTTP
 
     def details
-      json = get("database/#{name}")
+      json = get("databases/#{name}")
 
       DatabaseDetails.new json: json
     end
 
     def collections
-      json = get("database/#{name}/collections")
+      json = get("databases/#{name}/collections")
 
       collections = []
 
@@ -23,7 +23,7 @@ module MongoHQClient
     end
 
     def collection(col_name)
-      json = get("database/#{name}/collection/#{col_name}")
+      json = get("databases/#{name}/collections/#{col_name}")
 
       Collection.new(json: json, database: name)
     end
