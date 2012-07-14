@@ -3,11 +3,8 @@ module MongoHQClient
   module HTTP
 
     def get(uri)
-      puts uri
       raise "Invalid apikey" unless apikey
       resp = HTTParty.get("#{base_uri}/#{uri}", query: { :_apikey => apikey } )
-
-      puts resp.body
 
       #TODO error handling
 
