@@ -34,9 +34,13 @@ Retrive collections from database
 
     collections = client.databases.first.collections
 
-Retrieve documents from a collection
+Retrieve documents from collection
 
     documents = client.databases.first.collections.first.documents
+
+Retrieve indexes from from collection
+
+    indexes = client.databases.first.collections.first.indexes
 
 ## Contributing
 
