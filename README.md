@@ -2,8 +2,6 @@
 
 A simple MongoHQ api client for ruby
 
-TODO: Write a gem description
-
 ## Installation
 
 Add this line to your application's Gemfile:
