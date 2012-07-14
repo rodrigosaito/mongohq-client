@@ -17,5 +17,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency("fakeweb")
 
   s.require_path = 'lib'
+  s.files        = `git ls-files`.split($\)
 end
 

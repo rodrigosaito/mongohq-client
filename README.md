@@ -20,6 +20,10 @@ Or install it yourself as:
 
 ## Usage
 
+Require mongohq-client
+
+    require 'mongohq-client'
+
 Authenticate with you apikey
 
     client = MongoHQClient.from_apikey("youapikey")
@@ -27,6 +31,14 @@ Authenticate with you apikey
 Retrieve all your databases
 
     databases = client.databases
+
+Retrieve an specific database
+
+    db = client.database("database1")
+
+Retrive collections from database
+
+    collections = db.collections
 
 ## Contributing
 
