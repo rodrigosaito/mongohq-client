@@ -21,6 +21,17 @@ module MongoHQClient
       db_list
     end
 
+    def invoices
+      json = get("invoices")
+
+      invoices = []
+
+      json.each do |invoice|
+        invoices << Invoice.new(json: invoice)
+      end
+
+      invoices
+    end
   end
 
 end
