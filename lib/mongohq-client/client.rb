@@ -21,6 +21,12 @@ module MongoHQClient
       db_list
     end
 
+    def create_database(db_name, plan)
+      hash =  { name: db_name, slug: plan }
+
+      post("databases", hash)
+    end
+
     def invoices
       json = get("invoices")
 

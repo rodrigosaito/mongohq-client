@@ -42,6 +42,15 @@ Retrieve indexes from from collection
 
     indexes = client.databases.first.collections.first.indexes
 
+Create a new database
+
+    # Params database name, plan
+    client.create_database "my_db_name", "sandbox"
+
+Delete a database
+
+    client.databases.first.remove
+
 ## Contributing
 
 1. Fork it

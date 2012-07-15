@@ -76,4 +76,14 @@ describe MongoHQClient::Database do
     end
   end
 
+  describe "#remove" do
+    before do
+      FakeWeb.register_uri :delete, "https://api.mongohq.com/databases/database1?_apikey=123456", body: '{"ok":1}'
+    end
+
+    it "should remove database" do
+      database.remove
+    end
+  end
+
 end

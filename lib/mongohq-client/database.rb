@@ -28,5 +28,9 @@ module MongoHQClient
       Collection.new(json: json, database: name)
     end
 
+    def remove
+      delete("databases/#{name}")
+    end
+
   end
 end

@@ -22,6 +22,16 @@ describe MongoHQClient::Client do
     end
   end
 
+  describe "#create_database" do
+    before do
+      FakeWeb.register_uri :post, "https://api.mongohq.com/databases?_apikey=#{client.apikey}", body: '{"ok":1}'
+    end
+
+    it "should create database" do
+      client.create_database "my_new_db", "sandbox"
+    end
+  end
+
   describe "#invoices" do
     before do
       FakeWeb.register_uri :get, "https://api.mongohq.com/invoices?_apikey=#{client.apikey}", body: '[{"id":12345,"amount":5.0,"balance":0.0,"bill_date":"2012-06-01","is_paid":true},{"id":12346,"amount":5.0,"balance":0.0,"bill_date":"2012-07-01","is_paid":true}]'
