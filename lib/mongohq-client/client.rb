@@ -9,8 +9,18 @@ module MongoHQClient
       @apikey = apikey
     end
 
-    def databases
-      json = get("databases")
+    def databases(*args)
+      url = "databases"
+
+      if args.first
+        url += "/#{args.first}" # append the database name
+
+        json = get(url)
+
+        return Database.new(json: json, apikey: apikey)
+      end
+
+      json = get(url)
 
       db_list = []
 

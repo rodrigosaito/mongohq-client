@@ -13,12 +13,22 @@ describe MongoHQClient::Client do
   describe "#databases" do
     before do
       FakeWeb.register_uri :get, "https://api.mongohq.com/databases?_apikey=#{client.apikey}", body: '[{"name":"database1","hostname":"host.mongohq.com","port":27036,"shared":true,"plan":"Micro"},{"name":"database2","hostname":"host2.mongohq.com","port":10075,"shared":true,"plan":"Sandbox"},{"name":"database3","hostname":"staff.mongohq.com","port":10025,"shared":true,"plan":"Sandbox"}]'
+
+      FakeWeb.register_uri :get, "https://api.mongohq.com/databases/database1?_apikey=#{client.apikey}", body: '{"db":"database1","collections":10,"objects":1799,"avgObjSize":353.85881045025013,"dataSize":636592,"storageSize":2314240,"numExtents":17,"indexes":9,"indexSize":147168,"fileSize":251658240,"nsSizeMB":16,"ok":1.0,"name":"database1","hostname":"host.mongohq.com","port":27036,"shared":true,"plan":"Micro"}'
     end
 
     let(:databases) { client.databases }
 
     it "should return 3 databases" do
       databases.size.should eq(3)
+    end
+  end
+
+  describe "#databases by name" do
+    let(:database) { client.databases("database1") }
+
+    it "should return database by name" do
+      database.name.should eq("database1")
     end
   end
 
